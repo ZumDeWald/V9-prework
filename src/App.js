@@ -1,14 +1,16 @@
 import React from 'react';
+import Table from './Table.js';
 import './App.css';
 
 function App() {
   return (
     <div id='app-container' className='pm0'>
-      <header className='pm0 fbc'>
+      <header className='pm0 fbr'>
         <i className='fas fa-meteor fa-5x' />
+        <p className='header-text'>Meteor Landing Data</p>
       </header>
 
-      <section id='table' />
+      <Table />
 
       <footer id='footer' className='fbc'>
         <a

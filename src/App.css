@@ -18,6 +18,13 @@
   align-items: center;
 }
 
+.fbr {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .pointy {
   cursor: pointer;
 }
@@ -50,9 +57,11 @@ header {
 }
 
 .fa-meteor {
-  align-self: flex-start;
   margin-left: 0.5em;
   color: var(--color-pink);
+}
+
+.header-text {
 }
 
 #table {
