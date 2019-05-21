@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
@@ -9,13 +10,20 @@ function Table() {
       const res = await fetch(
         'https://data.nasa.gov/resource/gh4g-9sfh.json?$limit=10',
       );
-      const returnData = res.json();
-      return setData(returnData);
+      return res.json();
     }
-    fetchData();
+    fetchData().then(returnData => setData(returnData));
   }, []);
 
-  return <ul>{console.log(data)}</ul>;
+  return (
+    <div>
+      {!!data ? (
+        data.map(entry => <Entry entry={entry} key={entry.id} />)
+      ) : (
+        <div>LOADING</div>
+      )}
+    </div>
+  );
 }
 
 export default Table;
