@@ -41,7 +41,7 @@ a:active {
 
 #app-container {
   display: grid;
-  grid-template-columns: [c1] 1fr [c2];
+  grid-template-columns: [c1] 100% [c2];
   grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4];
   grid-gap: 1em;
   padding: 0.2em;

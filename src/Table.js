@@ -17,11 +17,11 @@ function Table() {
   }, []);
 
   return (
-    <div>
+    <div id='table-container' className='pm0'>
       {!!data ? (
         data.map(entry => <Entry entry={entry} key={entry.id} />)
       ) : (
-        <div>LOADING</div>
+        <div className='pm0 fbc'>LOADING</div>
       )}
     </div>
   );

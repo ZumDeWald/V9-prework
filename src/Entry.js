@@ -3,8 +3,8 @@ import './Entry.css';
 
 function Entry({entry}) {
   return (
-    <article>
-      <ul className='entry-container'>
+    <article className='pm0 fbc'>
+      <ul className='fbr entry-container'>
         <li className='entry-item'>Name: {entry.name}</li>
         <li className='entry-item'>Mass: {entry.mass}</li>
         <li className='entry-item'>Year: {entry.year}</li>

@@ -1,5 +1,9 @@
 @import 'App.css';
 
+#table-container {
+  width: 100%;
+}
+
 ul {
   list-style: none;
 }
