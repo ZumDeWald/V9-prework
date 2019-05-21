@@ -1,33 +1,85 @@
-.App {
-  text-align: center;
+/* CSS Variables */
+:root {
+  --font: 'Lato', sans-serif;
+  --color-pink: #ff0066;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+/* Common Styles */
+
+.pm0 {
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fbc {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-flow: column nowrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.fbr {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pointy {
+  cursor: pointer;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main App style */
+
+#app-container {
+  display: grid;
+  grid-template-columns: [c1] 1fr [c2];
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4];
+  grid-gap: 1em;
+  padding: 0.2em;
+}
+
+header {
+  grid-column: c1 / c2;
+  grid-row: r1 / r2;
+  max-width: 100%;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+.fa-meteor {
+  margin-left: 0.5em;
+  color: var(--color-pink);
+}
+
+.header-text {
+}
+
+#table {
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  max-width: 100%;
+  min-height: 600px;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+footer {
+  grid-column: c1 / c2;
+  grid-row: r3 / r4;
+  max-width: 100%;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 5px;
+  color: var(--color-pink);
 }

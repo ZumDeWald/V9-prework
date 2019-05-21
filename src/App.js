@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import Table from './Table.js';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div id='app-container' className='pm0'>
+      <header className='pm0 fbr'>
+        <i className='fas fa-meteor fa-5x' />
+        <p className='header-text'>Meteor Landing Data</p>
       </header>
+
+      <Table />
+
+      <footer id='footer' className='fbc'>
+        <a
+          href='https://github.com/ZumDeWald/V9-prework'
+          className='pointy'
+          target='_blank'
+          rel='noopener noreferrer'>
+          Source Code (github)
+        </a>
+      </footer>
     </div>
   );
 }
