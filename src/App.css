@@ -18,18 +18,59 @@
   align-items: center;
 }
 
+.pointy {
+  cursor: pointer;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Main App style */
 
 #app-container {
   display: grid;
   grid-template-columns: [c1] 1fr [c2];
-  grid-template-rows: [r1] 100px [r2] 1fr [r3] 20px [r4];
-  grid-gap: 2em;
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4];
+  grid-gap: 1em;
   padding: 0.2em;
 }
 
 header {
-  width: 100%;
-  background-color: #000;
+  grid-column: c1 / c2;
+  grid-row: r1 / r2;
+  max-width: 100%;
+  background-color: #fff;
+  border: 5px solid #000;
   border-radius: 5px;
+}
+
+.fa-meteor {
+  align-self: flex-start;
+  margin-left: 0.5em;
+  color: var(--color-pink);
+}
+
+#table {
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  max-width: 100%;
+  min-height: 600px;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+footer {
+  grid-column: c1 / c2;
+  grid-row: r3 / r4;
+  max-width: 100%;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 5px;
+  color: var(--color-pink);
 }
