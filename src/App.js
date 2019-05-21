@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div id='app-container'>
-      <header className='header'>
+    <div id='app-container' className='pm0'>
+      <header className='pm0 fbc'>
         <i className='fas fa-meteor fa-5x' />
       </header>
+
+      <section id='table' />
+
+      <footer id='footer' />
     </div>
   );
 }

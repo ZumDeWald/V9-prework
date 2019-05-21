@@ -1,9 +1,35 @@
-.App {
-  text-align: center;
-}
-
 /* CSS Variables */
 :root {
   --font: 'Lato', sans-serif;
   --color-pink: #ff0066;
+}
+
+/* Common Styles */
+
+.pm0 {
+  padding: 0;
+  margin: 0;
+}
+
+.fbc {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main App style */
+
+#app-container {
+  display: grid;
+  grid-template-columns: [c1] 1fr [c2];
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 20px [r4];
+  grid-gap: 2em;
+  padding: 0.2em;
+}
+
+header {
+  width: 100%;
+  background-color: #000;
+  border-radius: 5px;
 }
