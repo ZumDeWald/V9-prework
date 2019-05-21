@@ -7,12 +7,13 @@ function Table() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(
+      let res = await fetch(
         'https://data.nasa.gov/resource/gh4g-9sfh.json?$limit=10',
       );
-      return res.json();
+      let returnData = await res.json();
+      setData(returnData);
     }
-    fetchData().then(returnData => setData(returnData));
+    fetchData().catch(err => console.warn(err));
   }, []);
 
   return (
