@@ -2,8 +2,18 @@
 
 #table-container {
   width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 150px);
+  margin: 0 auto;
+  overflow-y: scroll;
 }
 
 ul {
   list-style: none;
+}
+
+.title-item {
+  padding: 0.5em;
+  margin: 0;
+  background-color: var(--color-gray2);
 }
