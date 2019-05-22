@@ -18,3 +18,8 @@ article {
   margin: 0;
   background-color: var(--color-gray3);
 }
+
+.entry-name {
+  position: sticky;
+  left: 0;
+}

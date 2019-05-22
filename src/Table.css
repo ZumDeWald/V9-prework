@@ -12,6 +12,12 @@ ul {
   list-style: none;
 }
 
+#table-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .title-item {
   padding: 0.5em;
   margin: 0;

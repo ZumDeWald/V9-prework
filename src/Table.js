@@ -18,7 +18,7 @@ function Table() {
 
   return (
     <div id='table-container' className='pm0'>
-      <ul className='fbr entry-container'>
+      <ul id='table-header' className='fbr entry-container'>
         <li className='title-item'>Name</li>
         <li className='title-item'>Mass (grams)</li>
         <li className='title-item'>Year</li>

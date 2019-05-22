@@ -5,7 +5,7 @@ function Entry({entry}) {
   return (
     <article className='pm0 fbc'>
       <ul className='fbr entry-container'>
-        <li className='entry-item'>{entry.name}</li>
+        <li className='entry-item entry-name'>{entry.name}</li>
         <li className='entry-item'>
           {!!entry.mass ? entry.mass : '[not recorded]'}
         </li>
