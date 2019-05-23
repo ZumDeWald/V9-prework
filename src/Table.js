@@ -17,22 +17,35 @@ function Table() {
     initialFetch().catch(err => console.warn(err));
   }, []);
 
+  /* Handle Previous and Next buttons */
+  const [range, setRange] = useState(0);
+  const handlePrev = () => {
+    if (range >= 10) {
+      setRange(range - 10);
+    }
+  };
+  const handleNext = () => {
+    if (range + 10 <= data.length) {
+      setRange(range + 10);
+    }
+  };
+
   /* Handle Search */
   const [search, setSearch] = useState('');
   useEffect(() => {
     if (!!search) {
       const match = new RegExp(escapeRegExp(search), 'i');
-      setViewData(data.filter(entry => match.test(entry.name)));
-    } else if (!!data) {
+      setViewData(data.filter(entry => match.test(entry.name)).slice(0, 50));
+    } else if (!!data && range === 0) {
       setViewData(data.slice(0, 10));
+    } else if (!!data && range > 0) {
+      setViewData(data.slice(`${range}`, `${range}` + 10));
     }
-  }, [data, search]);
+  }, [data, search, range]);
 
   const handleSetSearch = input => {
     setSearch(input);
   };
-
-  /* Handle Previous and Next buttons */
 
   return (
     <main>
@@ -61,8 +74,14 @@ function Table() {
         )}
       </div>
       <div className='prev-next'>
-        <button name='prev'>Previous 10</button>
-        <button name='next'>Next 10</button>
+        {range >= 10 && (
+          <button name='prev' onClick={handlePrev}>
+            Previous 10
+          </button>
+        )}
+        <button name='next' onClick={handleNext}>
+          Next 10
+        </button>
       </div>
     </main>
   );
