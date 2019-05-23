@@ -5,8 +5,8 @@ import './App.css';
 function App() {
   return (
     <div id='app-container' className='pm0'>
-      <header className='pm0 fbr'>
-        <i className='fas fa-meteor fa-5x' />
+      <header className='pm0 fbr header'>
+        <i className='fas fa-meteor fa-4x' />
         <p className='header-text'>Meteor Landing Data</p>
       </header>
 

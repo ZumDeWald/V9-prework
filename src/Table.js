@@ -59,6 +59,7 @@ function Table() {
           value={search}
         />
         <button
+          className='pointy'
           onClick={() => {
             setSearch('');
           }}>
@@ -71,8 +72,10 @@ function Table() {
           <li className='title-item'>Mass (grams)</li>
           <li className='title-item'>Year</li>
           <li className='title-item'>Name Type</li>
-          <li className='title-item'>Lat</li>
-          <li className='title-item'>Long</li>
+          <li className='title-item'>
+            Geolocation
+            <i className='fas fa-external-link-alt' />
+          </li>
         </ul>
         {!!viewData && !!search ? (
           viewData
@@ -86,15 +89,15 @@ function Table() {
           <div className='pm0 fbc'>No Matching Names</div>
         )}
       </div>
-      <div className='prev-next'>
+      <div className='prev-next fbr'>
         {range >= 50 && (
-          <button name='prev' onClick={handlePrev}>
-            Previous 50
+          <button name='prev' className='pointy' onClick={handlePrev}>
+            {'<< Previous 50'}
           </button>
         )}
         {range < viewData.length && viewData.length > 50 && (
-          <button name='next' onClick={handleNext}>
-            Next 50
+          <button name='next' className='pointy' onClick={handleNext}>
+            {'Next 50 >>'}
           </button>
         )}
         <p>Total Results: {viewData.length}</p>
