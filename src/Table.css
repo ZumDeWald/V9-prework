@@ -3,7 +3,7 @@
 #table-container {
   width: 100%;
   max-width: 900px;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 200px);
   margin: 0 auto;
   overflow-y: scroll;
 }

@@ -13,8 +13,12 @@ function Entry({entry}) {
           {!!entry.year ? entry.year.substring(0, 4) : '[not recorded]'}
         </li>
         <li className='entry-item'>{entry.nametype}</li>
-        <li className='entry-item'>{entry.geolocation.latitude}</li>
-        <li className='entry-item'>{entry.geolocation.longitude}</li>
+        <li className='entry-item'>
+          {!!entry.geolocation ? entry.geolocation.latitude : '[not recorded]'}
+        </li>
+        <li className='entry-item'>
+          {!!entry.geolocation ? entry.geolocation.longitude : '[not recorded]'}
+        </li>
       </ul>
     </article>
   );

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import escapeRegExp from 'escape-string-regexp';
 import Entry from './Entry.js';
 import './Table.css';
 
@@ -12,10 +13,18 @@ function Table() {
       let res = await fetch('https://data.nasa.gov/resource/gh4g-9sfh.json');
       let returnData = await res.json();
       setData(returnData);
-      setViewData(returnData.slice(0, 10));
     }
     initialFetch().catch(err => console.warn(err));
   }, []);
+
+  useEffect(() => {
+    if (!!search) {
+      const match = new RegExp(escapeRegExp(search), 'i');
+      setViewData(data.filter(entry => match.test(entry.name)));
+    } else if (!!data) {
+      setViewData(data.slice(0, 10));
+    }
+  }, [data, search]);
 
   const handleSetSearch = input => {
     setSearch(input);
@@ -40,10 +49,10 @@ function Table() {
         <li className='title-item'>Lat</li>
         <li className='title-item'>Long</li>
       </ul>
-      {!!data ? (
+      {!!viewData ? (
         viewData.map(entry => <Entry entry={entry} key={entry.id} />)
       ) : (
-        <div className='pm0 fbc'>LOADING</div>
+        <div className='pm0 fbc'>No Matching Names</div>
       )}
     </div>
   );
