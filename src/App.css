@@ -2,6 +2,9 @@
 :root {
   --font: 'Lato', sans-serif;
   --color-pink: #ff0066;
+  --color-gray1: #f4f4f4;
+  --color-gray2: #c5c5c5;
+  --color-gray3: #e9e9e9;
 }
 
 /* Common Styles */
@@ -41,19 +44,18 @@ a:active {
 
 #app-container {
   display: grid;
-  grid-template-columns: [c1] 1fr [c2];
+  grid-template-columns: [c1] 100% [c2];
   grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4];
   grid-gap: 1em;
   padding: 0.2em;
+  background-color: #fff;
 }
 
 header {
   grid-column: c1 / c2;
   grid-row: r1 / r2;
   max-width: 100%;
-  background-color: #fff;
-  border: 5px solid #000;
-  border-radius: 5px;
+  background-color: var(--color-gray1);
 }
 
 .fa-meteor {

@@ -3,14 +3,22 @@ import './Entry.css';
 
 function Entry({entry}) {
   return (
-    <article>
-      <ul className='entry-container'>
-        <li className='entry-item'>Name: {entry.name}</li>
-        <li className='entry-item'>Mass: {entry.mass}</li>
-        <li className='entry-item'>Year: {entry.year}</li>
-        <li className='entry-item'>Name Type: {entry.nametype}</li>
-        <li className='entry-item'>Lat: {entry.geolocation.latitude}</li>
-        <li className='entry-item'>Long: {entry.geolocation.longitude}</li>
+    <article className='pm0 fbc'>
+      <ul className='fbr entry-container'>
+        <li className='entry-item entry-name'>{entry.name}</li>
+        <li className='entry-item'>
+          {!!entry.mass ? entry.mass : '[not recorded]'}
+        </li>
+        <li className='entry-item'>
+          {!!entry.year ? entry.year.substring(0, 4) : '[not recorded]'}
+        </li>
+        <li className='entry-item'>{entry.nametype}</li>
+        <li className='entry-item'>
+          {!!entry.geolocation ? entry.geolocation.latitude : '[not recorded]'}
+        </li>
+        <li className='entry-item'>
+          {!!entry.geolocation ? entry.geolocation.longitude : '[not recorded]'}
+        </li>
       </ul>
     </article>
   );
