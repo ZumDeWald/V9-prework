@@ -63,6 +63,10 @@ ul {
   background-color: var(--color-gray2);
 }
 
+.fa-external-link-alt {
+  padding-left: 0.2em;
+}
+
 .prev-next {
   width: 40%;
   margin: 0.5em auto;

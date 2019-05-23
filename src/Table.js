@@ -72,7 +72,10 @@ function Table() {
           <li className='title-item'>Mass (grams)</li>
           <li className='title-item'>Year</li>
           <li className='title-item'>Name Type</li>
-          <li className='title-item'>Geolocation</li>
+          <li className='title-item'>
+            Geolocation
+            <i className='fas fa-external-link-alt' />
+          </li>
         </ul>
         {!!viewData && !!search ? (
           viewData
