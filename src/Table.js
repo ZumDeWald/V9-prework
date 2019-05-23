@@ -39,7 +39,7 @@ function Table() {
     } else if (!!data && range === 0) {
       setViewData(data.slice(0, 10));
     } else if (!!data && range > 0) {
-      setViewData(data.slice(`${range}`, `${range}` + 10));
+      setViewData(data.slice(range, range + 10));
     }
   }, [data, search, range]);
 
