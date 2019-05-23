@@ -3,21 +3,37 @@ import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
+  const [search, setSearch] = useState('');
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    async function initialFetch() {
       let res = await fetch(
         'https://data.nasa.gov/resource/gh4g-9sfh.json?$limit=50',
       );
       let returnData = await res.json();
       setData(returnData);
     }
-    fetchData().catch(err => console.warn(err));
+
+    initialFetch().catch(err => console.warn(err));
   }, []);
+
+  const handleSetSearch = input => {
+    setSearch(input);
+  };
 
   return (
     <div id='table-container' className='pm0'>
+      <input
+        className='search'
+        type='text'
+        placeholder='Search Through Data Set'
+        onChange={e => {
+          handleSetSearch(e.target.value);
+        }}
+        value={search}
+      />
+      <button>Filter</button>
       <ul id='table-header' className='fbr entry-container'>
         <li className='title-item'>Name</li>
         <li className='title-item'>Mass (grams)</li>
