@@ -4,7 +4,7 @@ import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
-  const [search, setSearch] = useState('');
+  /* Fetch Initial Data and View Data */
   const [data, setData] = useState(null);
   const [viewData, setViewData] = useState([]);
 
@@ -17,6 +17,8 @@ function Table() {
     initialFetch().catch(err => console.warn(err));
   }, []);
 
+  /* Handle Search */
+  const [search, setSearch] = useState('');
   useEffect(() => {
     if (!!search) {
       const match = new RegExp(escapeRegExp(search), 'i');
@@ -30,10 +32,12 @@ function Table() {
     setSearch(input);
   };
 
+  /* Handle Previous and Next buttons */
+
   return (
-    <div id='table-container' className='pm0'>
+    <main>
       <input
-        className='search'
+        className='search fbc'
         type='text'
         placeholder='Search By Name'
         onChange={e => {
@@ -41,20 +45,26 @@ function Table() {
         }}
         value={search}
       />
-      <ul id='table-header' className='fbr entry-container'>
-        <li className='title-item'>Name</li>
-        <li className='title-item'>Mass (grams)</li>
-        <li className='title-item'>Year</li>
-        <li className='title-item'>Name Type</li>
-        <li className='title-item'>Lat</li>
-        <li className='title-item'>Long</li>
-      </ul>
-      {!!viewData ? (
-        viewData.map(entry => <Entry entry={entry} key={entry.id} />)
-      ) : (
-        <div className='pm0 fbc'>No Matching Names</div>
-      )}
-    </div>
+      <div id='table-container' className='pm0'>
+        <ul id='table-header' className='fbr entry-container'>
+          <li className='title-item'>Name</li>
+          <li className='title-item'>Mass (grams)</li>
+          <li className='title-item'>Year</li>
+          <li className='title-item'>Name Type</li>
+          <li className='title-item'>Lat</li>
+          <li className='title-item'>Long</li>
+        </ul>
+        {!!viewData ? (
+          viewData.map(entry => <Entry entry={entry} key={entry.id} />)
+        ) : (
+          <div className='pm0 fbc'>No Matching Names</div>
+        )}
+      </div>
+      <div className='prev-next'>
+        <button name='prev'>Previous 10</button>
+        <button name='next'>Next 10</button>
+      </div>
+    </main>
   );
 }
 
