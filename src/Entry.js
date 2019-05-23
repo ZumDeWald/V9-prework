@@ -13,11 +13,19 @@ function Entry({entry}) {
           {!!entry.year ? entry.year.substring(0, 4) : '[not recorded]'}
         </li>
         <li className='entry-item'>{entry.nametype}</li>
-        <li className='entry-item'>
-          {!!entry.geolocation ? entry.geolocation.latitude : '[not recorded]'}
-        </li>
-        <li className='entry-item'>
-          {!!entry.geolocation ? entry.geolocation.longitude : '[not recorded]'}
+        <li className='entry-item orange'>
+          {!!entry.geolocation ? (
+            <a
+              href={`https://maps.google.com/?q=${entry.geolocation.latitude},${
+                entry.geolocation.longitude
+              }`}
+              target='_blank'
+              rel='noopener noreferrer'>
+              {entry.geolocation.latitude}, {entry.geolocation.longitude}
+            </a>
+          ) : (
+            '[not recorded]'
+          )}
         </li>
       </ul>
     </article>

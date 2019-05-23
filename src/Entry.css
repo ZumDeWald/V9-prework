@@ -22,3 +22,7 @@ article {
   position: sticky;
   left: 0;
 }
+
+.orange {
+  color: var(--color-orange);
+}
