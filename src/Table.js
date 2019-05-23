@@ -1,29 +1,105 @@
 import React, {useEffect, useState} from 'react';
+import escapeRegExp from 'escape-string-regexp';
 import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
+  /* Fetch Initial Data and View Data */
   const [data, setData] = useState(null);
+  const [viewData, setViewData] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      let res = await fetch(
-        'https://data.nasa.gov/resource/gh4g-9sfh.json?$limit=10',
-      );
+    async function initialFetch() {
+      let res = await fetch('https://data.nasa.gov/resource/gh4g-9sfh.json');
       let returnData = await res.json();
       setData(returnData);
     }
-    fetchData().catch(err => console.warn(err));
+    initialFetch().catch(err => console.warn(err));
   }, []);
 
+  /* Handle Previous and Next buttons */
+  const [range, setRange] = useState(0);
+  const handlePrev = () => {
+    if (range >= 50) {
+      setRange(range - 50);
+    }
+  };
+  const handleNext = () => {
+    if (range + 50 <= viewData.length) {
+      setRange(range + 50);
+    }
+  };
+
+  /* Handle Search */
+  const [search, setSearch] = useState('');
+  useEffect(() => {
+    if (!!search) {
+      const match = new RegExp(escapeRegExp(search), 'i');
+      setViewData(data.filter(entry => match.test(entry.name)));
+    } else if (!!data) {
+      setViewData(data);
+    }
+  }, [data, search]);
+
+  const handleSetSearch = input => {
+    setRange(0);
+    setSearch(input);
+  };
+
   return (
-    <div>
-      {!!data ? (
-        data.map(entry => <Entry entry={entry} key={entry.id} />)
-      ) : (
-        <div>LOADING</div>
-      )}
-    </div>
+    <main>
+      <section className='search fbr'>
+        <input
+          className='fbc'
+          type='text'
+          placeholder='Search By Name'
+          onChange={e => {
+            handleSetSearch(e.target.value);
+          }}
+          value={search}
+        />
+        <button
+          onClick={() => {
+            setSearch('');
+          }}>
+          Clear Search
+        </button>
+      </section>
+      <div id='table-container' className='pm0'>
+        <ul id='table-header' className='fbr entry-container'>
+          <li className='title-item'>Name</li>
+          <li className='title-item'>Mass (grams)</li>
+          <li className='title-item'>Year</li>
+          <li className='title-item'>Name Type</li>
+          <li className='title-item'>Lat</li>
+          <li className='title-item'>Long</li>
+        </ul>
+        {!!viewData && !!search ? (
+          viewData
+            .slice(range, range + 50)
+            .map(entry => <Entry entry={entry} key={entry.id} />)
+        ) : !!viewData ? (
+          viewData
+            .slice(range, range + 50)
+            .map(entry => <Entry entry={entry} key={entry.id} />)
+        ) : (
+          <div className='pm0 fbc'>No Matching Names</div>
+        )}
+      </div>
+      <div className='prev-next'>
+        {range >= 50 && (
+          <button name='prev' onClick={handlePrev}>
+            Previous 50
+          </button>
+        )}
+        {range < viewData.length && viewData.length > 50 && (
+          <button name='next' onClick={handleNext}>
+            Next 50
+          </button>
+        )}
+        <p>Total Results: {viewData.length}</p>
+      </div>
+    </main>
   );
 }
 
