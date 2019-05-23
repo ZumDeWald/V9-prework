@@ -1,8 +1,32 @@
 @import 'App.css';
 
 .search {
-  width: 200px;
+  justify-content: space-evenly;
+  width: 300px;
   margin: 0 auto;
+}
+
+input {
+  line-height: 2em;
+  background-color: var(--color-gray1);
+  color: #000;
+  border: 1px solid var(--color-pink-d);
+}
+
+input::placeholder {
+  color: var(--color-pink-l);
+}
+
+button {
+  color: #000;
+  font-size: 0.9em;
+  background-color: #fff;
+  border: 1px solid var(--color-gray2);
+  border-radius: 5px;
+}
+
+button:hover {
+  box-shadow: 2px 2px 8px var(--color-gray2);
 }
 
 #table-container {
@@ -23,8 +47,20 @@ ul {
   z-index: 2;
 }
 
+#table-header > li {
+  background-color: #7577c0;
+  color: #fff;
+  border: 1px solid #000;
+}
+
 .title-item {
   padding: 0.5em;
   margin: 0;
   background-color: var(--color-gray2);
+}
+
+.prev-next {
+  width: 40%;
+  margin: 0.5em auto;
+  justify-content: space-around;
 }

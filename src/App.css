@@ -2,6 +2,13 @@
 :root {
   --font: 'Lato', sans-serif;
   --color-pink: #ff0066;
+  --color-pink-l: #d44780;
+  --color-pink-d: #e5005c;
+  --color-grad1: #f02f7d;
+  --color-grad2: #e74e8c;
+  --color-grad3: #d865a8;
+  --color-grad4: #d089be;
+  --color-grad5: #c8a2c3;
   --color-gray1: #f4f4f4;
   --color-gray2: #c5c5c5;
   --color-gray3: #e9e9e9;
@@ -51,19 +58,34 @@ a:active {
   background-color: #fff;
 }
 
-header {
+.header {
   grid-column: c1 / c2;
   grid-row: r1 / r2;
+  justify-content: flex-start;
   max-width: 100%;
   background-color: var(--color-gray1);
 }
 
 .fa-meteor {
-  margin-left: 0.5em;
-  color: var(--color-pink);
+  padding: 6px;
+  margin: 0 0.2em 0 1.3em;
+  color: #fff;
+  background: #fff;
+  background-image: linear-gradient(
+    20deg,
+    var(--color-grad1),
+    var(--color-grad2),
+    var(--color-grad3),
+    var(--color-grad4) 95%,
+    var(--color-grad5)
+  );
+  border: 1px solid #000;
+  border-radius: 25px 8px 25px 8px;
 }
 
 .header-text {
+  font-size: 2em;
+  font-weight: bold;
 }
 
 #table {
