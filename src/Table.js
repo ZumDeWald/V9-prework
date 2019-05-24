@@ -4,8 +4,9 @@ import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
-  /* Fetch Initial Data and View Data */
+  /* Fetch Initial Data and Staged Data and View Data */
   const [data, setData] = useState(null);
+  const [stagedData, setStagedData] = useState(null);
   const [viewData, setViewData] = useState([]);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ function Table() {
       let res = await fetch('https://data.nasa.gov/resource/gh4g-9sfh.json');
       let returnData = await res.json();
       setData(returnData);
+      setStagedData(returnData);
     }
     initialFetch().catch(err => console.warn(err));
   }, []);
@@ -36,17 +38,20 @@ function Table() {
   useEffect(() => {
     if (!!search) {
       const match = new RegExp(escapeRegExp(search), 'i');
-      setViewData(data.filter(entry => match.test(entry.name)));
+      setViewData(stagedData.filter(entry => match.test(entry.name)));
+    } else if (!!deep) {
+      setViewData(stagedData);
     } else if (!!data) {
       setViewData(data);
     }
-  }, [data, search]);
+  }, [data, search, deep, stagedData]);
 
   async function deepSearch(query) {
     let res = await fetch(
-      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=name%20like%20%27%25${query}%25%27`,
+      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=UPPER(name)%20like%20%27%25${query}%25%27`,
     );
     let returnData = await res.json();
+    setStagedData(returnData);
     setViewData(returnData);
   }
 
@@ -57,7 +62,7 @@ function Table() {
 
   const handleSetDeep = input => {
     setRange(0);
-    setDeep(input);
+    setDeep(input.toUpperCase());
   };
 
   return (
@@ -81,9 +86,10 @@ function Table() {
             Clear
           </button>
         </section>
+
         <section className='search fbr'>
           <input
-            className='fbc'
+            className='fbc deep'
             type='text'
             placeholder='search 45k+ entries'
             onChange={e => {
@@ -92,22 +98,24 @@ function Table() {
             value={deep}
           />
           <button
-            className='pointy'
+            className='pointy deep'
             onClick={() => {
               deepSearch(deep);
             }}>
             Dig Deep!
           </button>
           <button
-            className='pointy'
+            className='pointy deep'
             onClick={() => {
               setDeep('');
+              setStagedData(data);
               setViewData(data);
             }}>
             Clear
           </button>
         </section>
-        <div className='scroll fbc'>
+
+        <div className='note fbc'>
           / / initial data set = first 1000 entries
         </div>
       </section>
@@ -137,7 +145,7 @@ function Table() {
           <div className='pm0 fbc'>No Matching Names</div>
         )}
       </div>
-      <div className='scroll fbc'>
+      <div className='note fbc'>
         / / scroll in all directions to find more data
       </div>
       <div className='prev-next fbr'>

@@ -1,9 +1,14 @@
 @import 'App.css';
 
 .search {
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 300px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0.4em;
+}
+
+.search > button {
+  margin-left: 0.5em;
 }
 
 input {
@@ -30,6 +35,10 @@ button {
 button:hover {
   border: 1px solid #fff;
   box-shadow: 2px 2px 8px var(--color-gray2);
+}
+
+.deep {
+  border: 1px solid #000;
 }
 
 #table-container {
@@ -79,9 +88,9 @@ ul {
   padding-left: 0.3em;
 }
 
-.scroll {
+.note {
   width: 100%;
-  margin: 0 auto;
+  font-size: 0.8em;
   color: var(--color-gray2);
 }
 
@@ -119,5 +128,9 @@ ul {
 
   .prev-next {
     width: 60%;
+  }
+
+  .note {
+    font-size: 1em;
   }
 }
