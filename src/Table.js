@@ -47,8 +47,9 @@ function Table() {
   }, [data, search, deep, stagedData]);
 
   async function deepSearch(query) {
+    let searchTerm = query.toUpperCase();
     let res = await fetch(
-      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=UPPER(name)%20like%20%27%25${query}%25%27`,
+      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=UPPER(name)%20like%20%27%25${searchTerm}%25%27`,
     );
     let returnData = await res.json();
     setStagedData(returnData);
@@ -62,7 +63,7 @@ function Table() {
 
   const handleSetDeep = input => {
     setRange(0);
-    setDeep(input.toUpperCase());
+    setDeep(input);
   };
 
   return (
