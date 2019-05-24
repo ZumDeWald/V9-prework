@@ -7,7 +7,7 @@ function App() {
     <div id='app-container' className='pm0'>
       <header className='pm0 fbr header'>
         <i className='fas fa-meteor fa-4x' />
-        <p className='header-text'>Meteor Landing Data</p>
+        <p className='header-text'>Meteorite Landing Data</p>
       </header>
 
       <Table />
