@@ -95,17 +95,25 @@ function Table() {
         / / scroll in all directions to find more data
       </div>
       <div className='prev-next fbr'>
-        {range >= 50 && (
+        {range >= 50 ? (
           <button name='prev' className='pointy' onClick={handlePrev}>
             {'<< Previous 50'}
           </button>
+        ) : (
+          <button name='prev' className='disabled'>
+            {'<< Previous 50'}
+          </button>
         )}
-        {range < viewData.length && viewData.length > 50 && (
+        {range < viewData.length && viewData.length > 50 ? (
           <button name='next' className='pointy' onClick={handleNext}>
             {'Next 50 >>'}
           </button>
+        ) : (
+          <button name='next' className='disabled'>
+            {'Next 50 >>'}
+          </button>
         )}
-        <p>Total Results: {viewData.length}</p>
+        <p>Current Dataset: {viewData.length}</p>
       </div>
     </main>
   );

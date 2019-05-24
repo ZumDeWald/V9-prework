@@ -22,9 +22,8 @@ button {
   padding: 0.4em;
   color: #000;
   font-size: 0.8em;
-  background-color: var(--color-orange);
-  background-image: linear-gradient(var(--color-orange), var(--color-orange-l));
-  border: 1px solid var(--color-gray2);
+  background-color: var(--color-orange-l);
+  border: 1px solid var(--color-orange);
   border-radius: 5px;
 }
 
@@ -37,8 +36,9 @@ button:hover {
   position: relative;
   width: 90%;
   max-width: 1200px;
-  height: calc(100vh - 330px);
+  height: calc(100vh - 390px);
   margin: 0.8em auto;
+  border: 1px solid var(--color-gray3);
   font-size: 0.8em;
   overflow: scroll;
 }
@@ -86,9 +86,17 @@ ul {
 }
 
 .prev-next {
-  width: 40%;
+  display: grid;
+  grid-template-columns: [c1] 1fr [c2] 1fr [c3] 1fr [c4];
+  grid-gap: 10px;
+  width: 95%;
   margin: 0.5em auto;
   justify-content: space-around;
+}
+
+.disabled {
+  background-color: var(--color-gray2);
+  border: none;
 }
 
 /* MEDIA QUERIES */
@@ -97,6 +105,7 @@ ul {
   #table-container {
     margin: 1em auto;
     font-size: 1em;
+    height: calc(100vh - 340px);
   }
 
   #table-header {
@@ -106,5 +115,9 @@ ul {
   .title-item {
     width: 180px;
     padding: 0.5em;
+  }
+
+  .prev-next {
+    width: 60%;
   }
 }
