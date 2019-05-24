@@ -45,7 +45,7 @@ button:hover {
   position: relative;
   width: 90%;
   max-width: 1200px;
-  height: calc(100vh - 390px);
+  height: calc(100vh - 420px);
   margin: 0.8em auto;
   border: 1px solid var(--color-gray3);
   font-size: 0.8em;
@@ -110,7 +110,7 @@ ul {
   #table-container {
     margin: 1em auto;
     font-size: 1em;
-    height: calc(100vh - 340px);
+    height: calc(100vh - 420px);
   }
 
   #table-header {

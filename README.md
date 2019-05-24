@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Meteorite Landing Data
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This app was created for the Chingu Voyage 9 pre-work. It pulls data from the
+[Nasa Open Data Portal Meteorite Landings API](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh)
 
-### `npm start`
+#### LIVE LINK : https://chingu-meteor-data.netlify.com/
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- The data is sorted and displayed into a chart, the chart is scrollable in
+  multiple directions to see all the data.
 
-### `npm test`
+- Clicking on the Geolocation coordinates launches Google Maps to display the
+  geolocation.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The chart is filterable by name based on the current data set (initial load
+  pulls in first 1000 entries).
 
-### `npm run build`
+- All 45,000 + entries can be queried by name with the "Dig Deep!" search
+  feature.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The Filter feature will further filter through search results if the "Dig
+  Deep!" search is active.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Filter and "Dig Deep!" search are case-insensitive.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Chart is paginated into 50 results at a time, and the previous / next buttons
+  are active only when there are enough entries to use them
 
-### `npm run eject`
+- The "Current Dataset" total at bottom is the total number of entries based on
+  the Filter and "Dig Deep!" results. This defaults to the initial 1000 entries
+  pulled on page load.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tech Used / Dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- This is a React App boostrapped with CRA
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Add-on packages include: <br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  1. [Husky](https://www.npmjs.com/package/husky)
+  2. [Lint-Staged](https://www.npmjs.com/package/lint-staged)
+  3. [Escape-String-RegExp](https://www.npmjs.com/package/escape-string-regexp)
+  4. [Prettier](https://www.npmjs.com/package/prettier)
 
-## Learn More
+- Color inspiration from: [Palettab](https://palettab.com/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Fonts from [Google Fonts](https://fonts.google.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Icons from [Font Awesome](https://fontawesome.com/)
