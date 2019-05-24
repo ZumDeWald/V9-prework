@@ -68,8 +68,8 @@ a:active {
 }
 
 .fa-meteor {
-  padding: 6px;
-  margin: 0 0.2em 0 1.3em;
+  padding: 5px;
+  margin: 0 0.2em 0 0.5em;
   color: #fff;
   background: #fff;
   background-image: linear-gradient(
@@ -85,7 +85,7 @@ a:active {
 }
 
 .header-text {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: bold;
 }
 
@@ -107,4 +107,17 @@ footer {
   border: 5px solid #000;
   border-radius: 5px;
   color: var(--color-pink);
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 500px) {
+  .fa-meteor {
+    padding: 6px;
+    margin: 0 0.2em 0 1em;
+  }
+
+  .header-text {
+    font-size: 2em;
+  }
 }

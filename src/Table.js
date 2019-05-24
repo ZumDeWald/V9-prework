@@ -68,11 +68,13 @@ function Table() {
       </section>
       <div id='table-container' className='pm0'>
         <ul id='table-header' className='fbr entry-container'>
-          <li className='title-item'>Name</li>
+          <li className='title-item entry-name name'>Name </li>
+          <li className='title-item'>ID</li>
           <li className='title-item'>Mass (grams)</li>
           <li className='title-item'>Year</li>
-          <li className='title-item'>Name Type</li>
-          <li className='title-item'>
+          <li className='title-item'>Fall</li>
+          <li className='title-item'>Recclass</li>
+          <li className='title-item geo'>
             Geolocation
             <i className='fas fa-external-link-alt' />
           </li>
@@ -89,18 +91,29 @@ function Table() {
           <div className='pm0 fbc'>No Matching Names</div>
         )}
       </div>
+      <div className='scroll fbc'>
+        / / scroll in all directions to find more data
+      </div>
       <div className='prev-next fbr'>
-        {range >= 50 && (
+        {range >= 50 ? (
           <button name='prev' className='pointy' onClick={handlePrev}>
             {'<< Previous 50'}
           </button>
+        ) : (
+          <button name='prev' className='disabled'>
+            {'<< Previous 50'}
+          </button>
         )}
-        {range < viewData.length && viewData.length > 50 && (
+        {range < viewData.length && viewData.length > 50 ? (
           <button name='next' className='pointy' onClick={handleNext}>
             {'Next 50 >>'}
           </button>
+        ) : (
+          <button name='next' className='disabled'>
+            {'Next 50 >>'}
+          </button>
         )}
-        <p>Total Results: {viewData.length}</p>
+        <p>Current Dataset: {viewData.length}</p>
       </div>
     </main>
   );
