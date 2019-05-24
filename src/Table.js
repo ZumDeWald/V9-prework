@@ -68,10 +68,12 @@ function Table() {
       </section>
       <div id='table-container' className='pm0'>
         <ul id='table-header' className='fbr entry-container'>
-          <li className='title-item'>Name</li>
+          <li className='title-item entry-name'>Name</li>
+          <li className='title-item'>ID</li>
           <li className='title-item'>Mass (grams)</li>
           <li className='title-item'>Year</li>
-          <li className='title-item'>Name Type</li>
+          <li className='title-item'>Fall</li>
+          <li className='title-item'>Recclass</li>
           <li className='title-item'>
             Geolocation
             <i className='fas fa-external-link-alt' />

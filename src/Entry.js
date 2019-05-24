@@ -7,12 +7,18 @@ function Entry({entry}) {
       <ul className='fbr entry-container'>
         <li className='entry-item entry-name'>{entry.name}</li>
         <li className='entry-item'>
+          {!!entry.id ? entry.id : '[not recorded]'}
+        </li>
+        <li className='entry-item'>
           {!!entry.mass ? entry.mass : '[not recorded]'}
         </li>
         <li className='entry-item'>
           {!!entry.year ? entry.year.substring(0, 4) : '[not recorded]'}
         </li>
-        <li className='entry-item'>{entry.nametype}</li>
+        <li className='entry-item'>{entry.fall}</li>
+        <li className='entry-item'>
+          {!!entry.recclass ? entry.recclass : '[not recorded]'}
+        </li>
         <li className='entry-item orange'>
           {!!entry.geolocation ? (
             <a
