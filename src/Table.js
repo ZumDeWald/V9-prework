@@ -4,8 +4,9 @@ import Entry from './Entry.js';
 import './Table.css';
 
 function Table() {
-  /* Fetch Initial Data and View Data */
+  /* Fetch Initial Data and Staged Data and View Data */
   const [data, setData] = useState(null);
+  const [stagedData, setStagedData] = useState(null);
   const [viewData, setViewData] = useState([]);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ function Table() {
       let res = await fetch('https://data.nasa.gov/resource/gh4g-9sfh.json');
       let returnData = await res.json();
       setData(returnData);
+      setStagedData(returnData);
     }
     initialFetch().catch(err => console.warn(err));
   }, []);
@@ -30,42 +32,95 @@ function Table() {
     }
   };
 
-  /* Handle Search */
+  /* Handle Search and Deep Dive Search */
   const [search, setSearch] = useState('');
+  const [deep, setDeep] = useState('');
   useEffect(() => {
     if (!!search) {
       const match = new RegExp(escapeRegExp(search), 'i');
-      setViewData(data.filter(entry => match.test(entry.name)));
+      setViewData(stagedData.filter(entry => match.test(entry.name)));
+    } else if (!!deep) {
+      setViewData(stagedData);
     } else if (!!data) {
       setViewData(data);
     }
-  }, [data, search]);
+  }, [data, search, deep, stagedData]);
+
+  async function deepSearch(query) {
+    let searchTerm = query.toUpperCase();
+    let res = await fetch(
+      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=UPPER(name)%20like%20%27%25${searchTerm}%25%27`,
+    );
+    let returnData = await res.json();
+    setStagedData(returnData);
+    setViewData(returnData);
+  }
 
   const handleSetSearch = input => {
     setRange(0);
     setSearch(input);
   };
 
+  const handleSetDeep = input => {
+    setRange(0);
+    setDeep(input);
+  };
+
   return (
     <main>
-      <section className='search fbr'>
-        <input
-          className='fbc'
-          type='text'
-          placeholder='Search By Name'
-          onChange={e => {
-            handleSetSearch(e.target.value);
-          }}
-          value={search}
-        />
-        <button
-          className='pointy'
-          onClick={() => {
-            setSearch('');
-          }}>
-          Clear Search
-        </button>
+      <section className='search-container fbc'>
+        <section className='search fbr'>
+          <input
+            className='fbc'
+            type='text'
+            placeholder='filter current data set'
+            onChange={e => {
+              handleSetSearch(e.target.value);
+            }}
+            value={search}
+          />
+          <button
+            className='pointy'
+            onClick={() => {
+              setSearch('');
+            }}>
+            Clear
+          </button>
+        </section>
+
+        <section className='search fbr'>
+          <input
+            className='fbc deep'
+            type='text'
+            placeholder='search 45k+ entries'
+            onChange={e => {
+              handleSetDeep(e.target.value);
+            }}
+            value={deep}
+          />
+          <button
+            className='pointy deep'
+            onClick={() => {
+              deepSearch(deep);
+            }}>
+            Dig Deep!
+          </button>
+          <button
+            className='pointy deep'
+            onClick={() => {
+              setDeep('');
+              setStagedData(data);
+              setViewData(data);
+            }}>
+            Clear
+          </button>
+        </section>
+
+        <div className='note fbc'>
+          / / initial data set = first 1000 entries
+        </div>
       </section>
+
       <div id='table-container' className='pm0'>
         <ul id='table-header' className='fbr entry-container'>
           <li className='title-item entry-name name'>Name </li>
@@ -91,7 +146,7 @@ function Table() {
           <div className='pm0 fbc'>No Matching Names</div>
         )}
       </div>
-      <div className='scroll fbc'>
+      <div className='note fbc'>
         / / scroll in all directions to find more data
       </div>
       <div className='prev-next fbr'>
