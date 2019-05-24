@@ -10,8 +10,8 @@ article {
 }
 
 .entry-item {
-  width: 175px;
-  padding: 0.5em;
+  width: 90px;
+  padding: 0.3em;
   margin: 0;
   border: 2px solid var(--color-gray3);
 }
@@ -19,9 +19,23 @@ article {
 .entry-name {
   position: sticky;
   left: 0;
+  width: 120px;
   background-color: var(--color-gray1);
+}
+
+.entry-geo {
+  width: 120px;
 }
 
 .orange {
   color: var(--color-orange);
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 500px) {
+  .entry-item {
+    width: 175px;
+    padding: 0.5em;
+  }
 }

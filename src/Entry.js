@@ -19,7 +19,7 @@ function Entry({entry}) {
         <li className='entry-item'>
           {!!entry.recclass ? entry.recclass : '[not recorded]'}
         </li>
-        <li className='entry-item orange'>
+        <li className='entry-item entry-geo orange'>
           {!!entry.geolocation ? (
             <a
               href={`https://maps.google.com/?q=${entry.geolocation.latitude},${

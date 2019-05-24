@@ -68,13 +68,13 @@ function Table() {
       </section>
       <div id='table-container' className='pm0'>
         <ul id='table-header' className='fbr entry-container'>
-          <li className='title-item entry-name'>Name</li>
+          <li className='title-item entry-name name'>Name </li>
           <li className='title-item'>ID</li>
           <li className='title-item'>Mass (grams)</li>
           <li className='title-item'>Year</li>
           <li className='title-item'>Fall</li>
           <li className='title-item'>Recclass</li>
-          <li className='title-item'>
+          <li className='title-item geo'>
             Geolocation
             <i className='fas fa-external-link-alt' />
           </li>
@@ -90,6 +90,9 @@ function Table() {
         ) : (
           <div className='pm0 fbc'>No Matching Names</div>
         )}
+      </div>
+      <div className='scroll fbc'>
+        / / scroll in all directions to find more data
       </div>
       <div className='prev-next fbr'>
         {range >= 50 && (
