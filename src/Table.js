@@ -30,8 +30,9 @@ function Table() {
     }
   };
 
-  /* Handle Search */
+  /* Handle Search and Deep Dive Search */
   const [search, setSearch] = useState('');
+  const [deep, setDeep] = useState('');
   useEffect(() => {
     if (!!search) {
       const match = new RegExp(escapeRegExp(search), 'i');
@@ -41,31 +42,76 @@ function Table() {
     }
   }, [data, search]);
 
+  async function deepSearch(query) {
+    let res = await fetch(
+      `https://data.nasa.gov/resource/gh4g-9sfh.json?$where=name%20like%20%27%25${query}%25%27`,
+    );
+    let returnData = await res.json();
+    setViewData(returnData);
+  }
+
   const handleSetSearch = input => {
     setRange(0);
     setSearch(input);
   };
 
+  const handleSetDeep = input => {
+    setRange(0);
+    setDeep(input);
+  };
+
   return (
     <main>
-      <section className='search fbr'>
-        <input
-          className='fbc'
-          type='text'
-          placeholder='Search By Name'
-          onChange={e => {
-            handleSetSearch(e.target.value);
-          }}
-          value={search}
-        />
-        <button
-          className='pointy'
-          onClick={() => {
-            setSearch('');
-          }}>
-          Clear Search
-        </button>
+      <section className='search-container fbc'>
+        <section className='search fbr'>
+          <input
+            className='fbc'
+            type='text'
+            placeholder='filter current data set'
+            onChange={e => {
+              handleSetSearch(e.target.value);
+            }}
+            value={search}
+          />
+          <button
+            className='pointy'
+            onClick={() => {
+              setSearch('');
+            }}>
+            Clear
+          </button>
+        </section>
+        <section className='search fbr'>
+          <input
+            className='fbc'
+            type='text'
+            placeholder='search 45k+ entries'
+            onChange={e => {
+              handleSetDeep(e.target.value);
+            }}
+            value={deep}
+          />
+          <button
+            className='pointy'
+            onClick={() => {
+              deepSearch(deep);
+            }}>
+            Dig Deep!
+          </button>
+          <button
+            className='pointy'
+            onClick={() => {
+              setDeep('');
+              setViewData(data);
+            }}>
+            Clear
+          </button>
+        </section>
+        <div className='scroll fbc'>
+          / / initial data set = first 1000 entries
+        </div>
       </section>
+
       <div id='table-container' className='pm0'>
         <ul id='table-header' className='fbr entry-container'>
           <li className='title-item entry-name name'>Name </li>
